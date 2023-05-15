@@ -1804,11 +1804,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\LayerOne\\Project - Web Application\\Project - WebAPI_v2\\WebAPIClient\\WebAPIClient\\WebAPIClient.csproj",
+      "projectUniqueName": "D:\\LayerOne\\Project - MessagePack\\Github\\Web-API\\WebAPIClient\\WebAPIClient\\WebAPIClient.csproj",
       "projectName": "WebAPIClient",
-      "projectPath": "D:\\LayerOne\\Project - Web Application\\Project - WebAPI_v2\\WebAPIClient\\WebAPIClient\\WebAPIClient.csproj",
+      "projectPath": "D:\\LayerOne\\Project - MessagePack\\Github\\Web-API\\WebAPIClient\\WebAPIClient\\WebAPIClient.csproj",
       "packagesPath": "C:\\Users\\Arham\\.nuget\\packages\\",
-      "outputPath": "D:\\LayerOne\\Project - Web Application\\Project - WebAPI_v2\\WebAPIClient\\WebAPIClient\\obj\\",
+      "outputPath": "D:\\LayerOne\\Project - MessagePack\\Github\\Web-API\\WebAPIClient\\WebAPIClient\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Arham\\AppData\\Roaming\\NuGet\\NuGet.Config",
