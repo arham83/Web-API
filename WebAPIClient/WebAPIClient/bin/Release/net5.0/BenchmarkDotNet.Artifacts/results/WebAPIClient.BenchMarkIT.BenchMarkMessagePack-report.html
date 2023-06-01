@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>WebAPIClient.BenchMarkIT.BenchMarkMessagePack-20230507-000432</title>
+<title>WebAPIClient.BenchMarkIT.BenchMarkMessagePack-20230525-201037</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -13,29 +13,21 @@
 </head>
 <body>
 <pre><code>
-BenchmarkDotNet=v0.13.5, OS=Windows 10 (10.0.19044.2846/21H2/November2021Update)
+BenchmarkDotNet=v0.13.5, OS=Windows 10 (10.0.19044.2965/21H2/November2021Update)
 Intel Xeon CPU E5-1620 0 3.60GHz, 1 CPU, 8 logical and 4 physical cores
-.NET SDK=7.0.202
+.NET SDK=7.0.203
   [Host]     : .NET 5.0.14 (5.0.1422.5710), X64 RyuJIT AVX [AttachedDebugger]
   DefaultJob : .NET 5.0.14 (5.0.1422.5710), X64 RyuJIT AVX
 </code></pre>
 <pre><code></code></pre>
 
 <table>
-<thead><tr><th>                    Method</th><th>  Mean</th><th> Error</th><th> StdDev</th>
+<thead><tr><th>            Method</th><th>Mean</th><th>Error</th><th>StdDev</th>
 </tr>
-</thead><tbody><tr><td>MessagePackSerialization_SFM</td><td>1,949.6 &mu;s</td><td>32.91 &mu;s</td><td>56.76 &mu;s</td>
-</tr><tr><td>TransmissionTime_UsingWebAPI_SFM</td><td>8,116.9 &mu;s</td><td>187.80 &mu;s</td><td>529.68 &mu;s</td>
-</tr><tr><td>MessagePackDeserialization_SFM</td><td>3,484.8 &mu;s</td><td>58.87 &mu;s</td><td>52.19 &mu;s</td>
-</tr><tr><td>MessagePackSerialization_SOM</td><td>605.2 &mu;s</td><td>12.09 &mu;s</td><td>23.59 &mu;s</td>
-</tr><tr><td>TransmissionTime_UsingWebAPI_SOM</td><td>5,400.2 &mu;s</td><td>108.24 &mu;s</td><td>312.31 &mu;s</td>
-</tr><tr><td>MessagePackDeserialization_SOM</td><td>549.0 &mu;s</td><td>11.63 &mu;s</td><td>34.29 &mu;s</td>
-</tr><tr><td>MessagePackSerialization_BFM</td><td>154,036.3 &mu;s</td><td>1,659.02 &mu;s</td><td>1,385.36 &mu;s</td>
-</tr><tr><td>TransmissionTime_UsingWebAPI_BFM</td><td>571,389.8 &mu;s</td><td>37,839.88 &mu;s</td><td>109,780.36 &mu;s</td>
-</tr><tr><td>MessagePackDeserialization_BFM</td><td>403,254.3 &mu;s</td><td>7,630.18 &mu;s</td><td>7,493.86 &mu;s</td>
-</tr><tr><td>MessagePackSerialization_BOM</td><td>33,422.9 &mu;s</td><td>655.21 &mu;s</td><td>1,518.55 &mu;s</td>
-</tr><tr><td>TransmissionTime_UsingWebAPI_BOM</td><td>229,836.0 &mu;s</td><td>4,474.29 &mu;s</td><td>11,942.80 &mu;s</td>
-</tr><tr><td>MessagePackDeserialization_BOM</td><td>28,962.5 &mu;s</td><td>574.69 &mu;s</td><td>1,249.32 &mu;s</td>
+</thead><tbody><tr><td>Evaluate_UsingWebAPI_SFM</td><td>10.895 ms</td><td>0.2967 ms</td><td>0.8465 ms</td>
+</tr><tr><td>Evaluate_UsingWebAPI_SOM</td><td>7.229 ms</td><td>0.1877 ms</td><td>0.5475 ms</td>
+</tr><tr><td>Evaluate_UsingWebAPI_BFM</td><td>801.538 ms</td><td>23.0946 ms</td><td>67.0018 ms</td>
+</tr><tr><td>Evaluate_UsingWebAPI_BOM</td><td>277.721 ms</td><td>9.3091 ms</td><td>27.0074 ms</td>
 </tr></tbody></table>
 </body>
 </html>

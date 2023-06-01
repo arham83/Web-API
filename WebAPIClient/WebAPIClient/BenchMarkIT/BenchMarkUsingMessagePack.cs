@@ -15,13 +15,13 @@ namespace WebAPIClient.BenchMarkIT
     public class BenchMarkMessagePack
     {
         private readonly FullMessage SFM;
-        private readonly Byte[] mpBytes1;
+        public Byte[] mpBytes1;
         private readonly OptimizedMessage SOM;
-        private readonly Byte[] mpBytes2;
+        public Byte[] mpBytes2;
         private readonly FullMessage BFM;
-        private readonly Byte[] mpBytes3;
+        public Byte[] mpBytes3;
         private readonly OptimizedMessage BOM;
-        private readonly Byte[] mpBytes4;
+        public Byte[] mpBytes4;
         private readonly APICalls _req;
 
         public BenchMarkMessagePack()
@@ -30,84 +30,40 @@ namespace WebAPIClient.BenchMarkIT
             BFM = JsonHandler.DeserializeJson<FullMessage>(Misc.GetPath(@"SampleMessages\bigFull.json"));
             SOM = JsonHandler.DeserializeJson<OptimizedMessage>(Misc.GetPath(@"SampleMessages\smallOptimized.json"));
             BOM = JsonHandler.DeserializeJson<OptimizedMessage>(Misc.GetPath(@"SampleMessages\bigOptimized.json"));
-            mpBytes1 = MessagePackSerializer.Serialize(SFM);
-            mpBytes2 = MessagePackSerializer.Serialize(SOM);
-            mpBytes3 = MessagePackSerializer.Serialize(BFM);
-            mpBytes4 = MessagePackSerializer.Serialize(BOM);
             _req = new  APICalls("http://localhost:32872/values");
-
         }
 
-
-        // Small Full Sized Message 
         [Benchmark]
-        public void MessagePackSerialization_SFM()
+        public async Task Evaluate_UsingWebAPI_SFM()
         {
-            MessagePackSerializer.Serialize(SFM);
-        }
-        [Benchmark]
-        public async Task TransmissionTime_UsingWebAPI_SFM()
-        {
+            mpBytes1 = MessagePackSerializer.Serialize(SFM);
             await _req.Post(mpBytes1, "/FM");
         }
+        
         [Benchmark]
-        public void MessagePackDeserialization_SFM()
+        public async Task Evaluate_UsingWebAPI_SOM()
         {
-            MessagePackSerializer.Deserialize<FullMessage>(mpBytes1);
-        }
-
-        // Small Optimized Message 
-
-        [Benchmark]
-        public void MessagePackSerialization_SOM()
-        {
-            MessagePackSerializer.Serialize(SOM);
-        }
-        [Benchmark]
-        public async Task TransmissionTime_UsingWebAPI_SOM()
-        {
+            mpBytes2 = MessagePackSerializer.Serialize(SOM);
             await _req.Post(mpBytes2, "/OM");
-        }
-        [Benchmark]
-        public void MessagePackDeserialization_SOM()
-        {
-            MessagePackSerializer.Deserialize<OptimizedMessage>(mpBytes2);
         }
 
         // Big Full Sized Message 
 
         [Benchmark]
-        public void MessagePackSerialization_BFM()
+        public async Task Evaluate_UsingWebAPI_BFM()
         {
-            MessagePackSerializer.Serialize(BFM);
-        }
-        [Benchmark]
-        public async Task TransmissionTime_UsingWebAPI_BFM()
-        {
+            mpBytes3 = MessagePackSerializer.Serialize(BFM);
             await _req.Post(mpBytes3, "/FM");
-        }
-        [Benchmark]
-        public void MessagePackDeserialization_BFM()
-        {
-            MessagePackSerializer.Deserialize<FullMessage>(mpBytes3);
         }
 
         // Big Optimized Message 
 
         [Benchmark]
-        public void MessagePackSerialization_BOM()
+        public async Task Evaluate_UsingWebAPI_BOM()
         {
-            MessagePackSerializer.Serialize(BOM);
-        }
-        [Benchmark]
-        public async Task TransmissionTime_UsingWebAPI_BOM()
-        {
+            mpBytes4 = MessagePackSerializer.Serialize(BOM);
             await _req.Post(mpBytes4, "/OM");
         }
-        [Benchmark]
-        public void MessagePackDeserialization_BOM()
-        {
-            MessagePackSerializer.Deserialize<OptimizedMessage>(mpBytes4);
-        }
+
     }
 }

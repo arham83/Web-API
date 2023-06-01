@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebAPIServer.MessageStructure;
+using WebAPIServer.Miscellaneous;
+using WebAPIServer.Test;
 
 namespace WebAPIServer.Controllers
 {
@@ -45,17 +47,55 @@ namespace WebAPIServer.Controllers
         [HttpPost("FM")]
         public IActionResult PostFM([FromBody] FullMessage FM)
         {
-            // Process the byte array as needed
-            var Message = "Data received successfully against the following ID: " + FM.Header[0].Name;
+            var Message = "Data received successfully";
             return Ok(Message);
         }
-
+        
         [HttpPost("OM")]
         public IActionResult PostOM([FromBody] OptimizedMessage OM)
         {
-            // Process the byte array as needed
-            var Message = "Data received successfully against the following ID: " + OM.Header[0].Name;
+            var Message = "Data received successfully";
             return Ok(Message);
         }
+
+        #region For Testing Purpose
+
+        [HttpPost("BFM")]
+        public IActionResult PostBFM([FromBody] FullMessage FM)
+        {
+            var RFM = Misc.JsonHandler.DeserializeJson<FullMessage>(Misc.GetPath(@"SampleMessages\bigFull.json"));
+            bool areEqual = new Comparer().CompareFM(RFM, FM);
+            var Message = "Test Passed" + areEqual;
+            return Ok(Message);
+        }
+
+        [HttpPost("SFM")]
+        public IActionResult PostSFM([FromBody] FullMessage FM)
+        {
+            var RFM = Misc.JsonHandler.DeserializeJson<FullMessage>(Misc.GetPath(@"SampleMessages\smallFull.json"));
+            bool areEqual = new Comparer().CompareFM(RFM, FM);
+            var Message = "Test Passed" + areEqual;
+            return Ok(Message);
+        }
+
+        [HttpPost("SOM")]
+        public IActionResult PostSOM([FromBody] OptimizedMessage OM)
+        {
+            var ROM = Misc.JsonHandler.DeserializeJson<OptimizedMessage>(Misc.GetPath(@"SampleMessages\smallOptimized.json"));
+            bool areEqual = new Comparer().CompareOM(ROM, OM);
+            var Message = "Test Passed" + areEqual;
+            return Ok(Message);
+        }
+        [HttpPost("BOM")]
+        public IActionResult PostBOM([FromBody] OptimizedMessage OM)
+        {
+            var ROM = Misc.JsonHandler.DeserializeJson<OptimizedMessage>(Misc.GetPath(@"SampleMessages\bigOptimized.json"));
+            bool areEqual = new Comparer().CompareOM(ROM, OM);
+            var Message = "Test Passed" + areEqual;
+            return Ok(Message);
+        }
+
+
+        #endregion
     }
 }
